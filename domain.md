@@ -178,7 +178,9 @@ what it deliberately does not present — should match the source code directly:
 the same names, the same hierarchy, the same plurality, and the same vocabulary
 described in Public mappings.
 
-Later, when `brain-complications` is added, the same modelling repeats:
+Later, when `brain-complications` is added, the same modelling repeats. The
+folders are not 1:1 — a brain domain has its own complications, like
+`seizures.ts`, alongside the ones it shares with the heart:
 
 ```text
 domain.ts
@@ -189,6 +191,7 @@ heart-complications/
 brain-complications/
   aneurysm.ts
   stroke.ts
+  seizures.ts
 ```
 
 Once `heart-complications` is well-defined and `brain-complications` follows the
