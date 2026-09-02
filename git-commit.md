@@ -20,6 +20,6 @@ Use this playbook before creating a Git commit.
 - Do not commit directly to a default branch, except for appropriate initial work in a new `reggi/*` repository.
 - Name the initial and default branch of a new repository `main`; do not use a task or setup branch as its temporary default.
 - Never discard or rewrite unrelated worktree changes.
-- Do not amend, squash, rebase, force-push, or otherwise rewrite history unless explicitly requested.
-- Use a concise commit message that describes the completed change.
+- Never amend, squash, rebase, force-push, or otherwise rewrite existing commit history, including to retrofit commits that do not follow the current message convention.
+- Use [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) for all new commit messages, keeping each message concise and focused on the completed change.
 - Do not claim files are committed until the commit succeeds and its contents have been inspected.
