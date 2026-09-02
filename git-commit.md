@@ -1,0 +1,24 @@
+# Git commits
+
+Use this playbook before creating a Git commit.
+
+## Pre-flight checklist
+
+1. Confirm the user explicitly requested a commit.
+2. Run `git status --short --branch`. Avoid committing on `main`, `master`, `latest`, or another default branch unless this is a new `reggi/*` repository where direct initial commits are appropriate.
+3. Review the complete staged and unstaged diff. Preserve unrelated changes and stage only files intended for this commit.
+4. Check for secrets, credentials, private identifiers, generated files, build output, and other artifacts that should not be committed.
+5. If the repository uses Node.js, ensure `node_modules/` is covered by `.gitignore` before staging files.
+6. Ensure the repository has a `README.md` and that its top-level heading correctly names the project.
+7. Confirm the commit contains one coherent change and that directly related documentation is current.
+8. Run the repository's required validation unless the user has requested remote CI instead of local tests or builds.
+9. Review the final staged diff and staged file list before committing.
+
+## Commit rules
+
+- Never create a commit without explicit user approval.
+- Do not commit directly to a default branch, except for appropriate initial work in a new `reggi/*` repository.
+- Never discard or rewrite unrelated worktree changes.
+- Do not amend, squash, rebase, force-push, or otherwise rewrite history unless explicitly requested.
+- Use a concise commit message that describes the completed change.
+- Do not claim files are committed until the commit succeeds and its contents have been inspected.

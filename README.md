@@ -22,6 +22,7 @@ Agents should:
 
 | File | Scope |
 | --- | --- |
+| [`git-commit.md`](git-commit.md) | Pre-flight checks and safety rules for creating Git commits |
 | [`self-host.md`](self-host.md) | Selecting, verifying, and operating open-source self-hosted software |
 | [`railway.md`](railway.md) | Railway infrastructure using `.railway/railway.ts` |
 | [`static-html.md`](static-html.md) | Single-file static HTML generation |
