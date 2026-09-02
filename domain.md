@@ -178,6 +178,30 @@ what it deliberately does not present — should match the source code directly:
 the same names, the same hierarchy, the same plurality, and the same vocabulary
 described in Public mappings.
 
+`domain.ts` holds the contract every complication file must satisfy:
+
+```ts
+// domain.ts
+export interface HeartComplication {
+  name: string
+  severity: "low" | "moderate" | "high"
+  describe(): string
+}
+```
+
+Each file in `heart-complications/` implements it in the same shape:
+
+```ts
+// heart-complications/arrhythmia.ts
+import type { HeartComplication } from "../domain.ts"
+
+export const arrhythmia: HeartComplication = {
+  name: "Arrhythmia",
+  severity: "moderate",
+  describe: () => "An irregular or abnormal heart rhythm.",
+}
+```
+
 Later, when `brain-complications` is added, the same modelling repeats. The
 folders are not 1:1 — a brain domain has its own complications, like
 `seizures.ts`, alongside the ones it shares with the heart:
