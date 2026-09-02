@@ -72,6 +72,39 @@ commands/
       status.js
 ```
 
+## Public mappings
+
+When a source concept is exposed through another interface, the public-facing
+name should match the source code's domain, hierarchy, plurality, and
+vocabulary. Do not paraphrase, shorten, rename, or collapse source concepts
+during the mapping.
+
+This applies to command names, routes, package exports, API paths, event names,
+configuration keys, generated artifacts, and any other mapping from source code
+to a public-facing name.
+
+For example, this command mapping is bad:
+
+```json
+{
+  "railway-docker-image-updates": "dist/railway/docker-images/check-updates.js",
+  "repository-check": "dist/repository/check.js",
+  "repository-fix": "dist/repository/fix.js"
+}
+```
+
+`railway-docker-image-updates` changes `docker-images` to `docker-image` and
+collapses `check-updates` to `updates`. The public name no longer describes the
+source code directly. Prefer the direct mapping:
+
+```json
+{
+  "railway-docker-images-check-updates": "dist/railway/docker-images/check-updates.js",
+  "repository-check": "dist/repository/check.js",
+  "repository-fix": "dist/repository/fix.js"
+}
+```
+
 File-based routing demonstrates the same principle. Astro routes such as:
 
 ```text
