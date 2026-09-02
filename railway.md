@@ -68,42 +68,58 @@ Document any component that is likely to exceed Hobby-plan limits or cannot safe
 
 Do not add Railway UUIDs, generated Railway domains, encrypted values, platform internals, or unnecessary defaults to the file.
 
+## Image versions
+
+Store pinned image repositories and tags in:
+
+```text
+.railway/docker-images.json
+```
+
+Import that file from `.railway/railway.ts` so deployment configuration and
+update checks use the same values. Keep the manifest small and explicit:
+
+```json
+{
+  "images": {
+    "app": {
+      "repository": "ghcr.io/example/app",
+      "tag": "1.2.3",
+      "releaseUrl": "https://github.com/example/app/releases"
+    }
+  }
+}
+```
+
 ## Example shape
 
 ```ts
-import {
-  defineRailway,
-  image,
-  postgres,
-  preserve,
-  project,
-  service,
-  volume,
-} from "railway/iac";
+import dockerImages from './docker-images.json' with {type: 'json'}
+import {defineRailway, image, postgres, preserve, project, service, volume} from 'railway/iac'
 
 export default defineRailway(() => {
-  const database = postgres("postgres");
-  const data = volume("app-data", {
+  const database = postgres('postgres')
+  const data = volume('app-data', {
     sizeMB: 1_024,
-  });
+  })
 
-  const app = service("app", {
-    source: image("ghcr.io/example/app:1.2.3"),
-    healthcheck: "/health",
+  const app = service('app', {
+    source: image(`${dockerImages.images.app.repository}:${dockerImages.images.app.tag}`),
+    healthcheck: '/health',
     env: {
       DATABASE_URL: database.env.DATABASE_URL,
       APP_SECRET: preserve(),
-      PORT: "3000",
+      PORT: '3000',
     },
     volumeMounts: {
-      "/app/data": data,
+      '/app/data': data,
     },
-  });
+  })
 
-  return project("railway-example-app", {
+  return project('railway-example-app', {
     resources: [database, data, app],
-  });
-});
+  })
+})
 ```
 
 Adapt this shape to the application's official deployment documentation. Do not assume its ports, paths, variables, database requirements, or health endpoint.
@@ -114,15 +130,15 @@ Document every environment variable, including variables represented by resource
 
 For each variable, record:
 
-| Field | Meaning |
-| --- | --- |
-| Name | Exact environment variable name |
-| Service | Service that receives it |
-| Required | Whether the application requires it |
-| Secret | Whether its value must remain sealed |
-| Source | Literal configuration, Railway resource reference, or user-provided secret |
-| Purpose | What behavior it controls |
-| Example | A safe non-secret example, when useful |
+| Field    | Meaning                                                                    |
+| -------- | -------------------------------------------------------------------------- |
+| Name     | Exact environment variable name                                            |
+| Service  | Service that receives it                                                   |
+| Required | Whether the application requires it                                        |
+| Secret   | Whether its value must remain sealed                                       |
+| Source   | Literal configuration, Railway resource reference, or user-provided secret |
+| Purpose  | What behavior it controls                                                  |
+| Example  | A safe non-secret example, when useful                                     |
 
 Also document:
 

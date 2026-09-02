@@ -21,19 +21,20 @@ Agents should:
 
 ## Playbooks
 
-| File | Scope |
-| --- | --- |
-| [`git-commit.md`](git-commit.md) | Pre-flight checks and safety rules for creating Git commits |
-| [`github-repository.md`](github-repository.md) | Creating and publishing GitHub repositories safely |
-| [`self-host.md`](self-host.md) | Selecting, verifying, and operating open-source self-hosted software |
-| [`railway.md`](railway.md) | Railway infrastructure using `.railway/railway.ts` |
-| [`static-html.md`](static-html.md) | Single-file static HTML generation |
-| [`typescript.md`](typescript.md) | TypeScript project organization and defaults |
-| [`html-ui.md`](html-ui.md) | Consistent HTML and UI design across repositories |
-| [`image-editing.md`](image-editing.md) | Image editing and UI tooling preferences |
-| [`openscad.md`](openscad.md) | Parametric 3D-printing work with OpenSCAD |
-| [`local-machine.md`](local-machine.md) | Local machine management with NixOS and Nixpacks |
-| [`lean-specs.md`](lean-specs.md) | Using Lean proofs to specify application behavior and state |
+| File                                           | Scope                                                                |
+| ---------------------------------------------- | -------------------------------------------------------------------- |
+| [`git-commit.md`](git-commit.md)               | Pre-flight checks and safety rules for creating Git commits          |
+| [`github-repository.md`](github-repository.md) | Creating and publishing GitHub repositories safely                   |
+| [`self-host.md`](self-host.md)                 | Selecting, verifying, and operating open-source self-hosted software |
+| [`railway.md`](railway.md)                     | Railway infrastructure using `.railway/railway.ts`                   |
+| [`static-html.md`](static-html.md)             | Single-file static HTML generation                                   |
+| [`typescript.md`](typescript.md)               | TypeScript project organization and defaults                         |
+| [`domain.md`](domain.md)                       | Domain-first source organization across languages and frameworks     |
+| [`html-ui.md`](html-ui.md)                     | Consistent HTML and UI design across repositories                    |
+| [`image-editing.md`](image-editing.md)         | Image editing and UI tooling preferences                             |
+| [`openscad.md`](openscad.md)                   | Parametric 3D-printing work with OpenSCAD                            |
+| [`local-machine.md`](local-machine.md)         | Local machine management with NixOS and Nixpacks                     |
+| [`lean-specs.md`](lean-specs.md)               | Using Lean proofs to specify application behavior and state          |
 
 ## Writing rules
 
