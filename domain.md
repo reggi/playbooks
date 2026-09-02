@@ -3,6 +3,12 @@
 Use this playbook when the structure of a codebase should reflect its problem
 domains rather than only its technical file types.
 
+This follows Domain-Driven Design (DDD), a software development approach that
+focuses on aligning code with the real-world business environment and its rules.
+The domains here are bespoke to each application: they are not the generic
+folders software usually ships with, but names that only appear once you define
+what a particular application is about.
+
 ## Timing
 
 - Do not force a domain structure before meaningful patterns exist.
@@ -145,6 +151,52 @@ dog/
 Here, `domain.ts` defines the shared `Say` and `Look` interfaces. Both
 `cat/say.ts` and `dog/say.ts` follow `Say`, while both `look.ts` files follow
 `Look`.
+
+## Worked example: a bespoke domain
+
+Imagine an application that renders a 3D UI of the heart and the complications
+that affect how it pumps. `heart-complications` is not a folder software
+typically has. It only appears because this application is defined around that
+subject, and once it is, a logical hierarchy of the domain emerges.
+
+The interface lists each complication: `Arrhythmia`, `Aneurysm`, and `Stroke`.
+Each is presented the same way, so each maps to a file under the same domain,
+and each satisfies the same domain interface:
+
+```text
+domain.ts
+heart-complications/
+  arrhythmia.ts
+  aneurysm.ts
+  stroke.ts
+```
+
+Here `domain.ts` defines the `HeartComplication` interface. `arrhythmia.ts`,
+`aneurysm.ts`, and `stroke.ts` each satisfy it, so every complication is uniform
+in shape. What the UI, CLI, image, or other interface presents — and sometimes
+what it deliberately does not present — should match the source code directly:
+the same names, the same hierarchy, the same plurality, and the same vocabulary
+described in Public mappings.
+
+Later, when `brain-complications` is added, the same modelling repeats:
+
+```text
+domain.ts
+heart-complications/
+  arrhythmia.ts
+  aneurysm.ts
+  stroke.ts
+brain-complications/
+  aneurysm.ts
+  stroke.ts
+```
+
+Once `heart-complications` is well-defined and `brain-complications` follows the
+same pattern, a common shape becomes visible. A refactor can then introduce a
+shared `BodilyComplication` interface that both `HeartComplication` and
+`BrainComplication` extend, promoting the contract into `domain.ts` without
+changing what each interface presents. Do not force this shared interface early;
+let it emerge once more than one domain proves the pattern.
 
 ## Agent guidance
 
