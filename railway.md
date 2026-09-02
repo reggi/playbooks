@@ -34,6 +34,13 @@ The committed infrastructure must not depend on an existing Railway project, acc
 
 Make instance-specific values configurable and document how each deployer supplies them. A new user should be able to create a fresh Railway project from the repository without inheriting access to, references to, or assumptions about the original author's infrastructure.
 
+Validate user-provided domains before using them in infrastructure. Domain
+inputs should contain only the hostname expected by Railway, without a URL
+scheme, path, or whitespace. Reject unchanged example placeholders during
+planning rather than attempting to provision them. Derive related values such
+as an application's HTTPS base URL from the validated hostname instead of
+requiring duplicate configuration.
+
 ## Resource policy
 
 Design self-hosted projects for Railway's Hobby plan and low traffic by default.

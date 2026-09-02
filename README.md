@@ -8,7 +8,7 @@ The goal is consistency without loading a large instruction set into every conve
 
 Reference the relevant playbook directly:
 
-> I want to deploy an instance of Vikunja on Railway. Follow `https://github.com/reggi/playbooks/blob/reggi/initial-playbooks/self-host.md`.
+> I want to deploy an instance of Vikunja on Railway. Follow `https://github.com/reggi/playbooks/blob/main/self-host.md`.
 
 Agents should:
 
@@ -17,12 +17,14 @@ Agents should:
 3. Inspect the target repository before changing it.
 4. Preserve existing project conventions unless the playbook explicitly overrides them.
 5. Ask before deploying, applying infrastructure changes, publishing, or performing destructive operations.
+6. Prefer links to the default branch for maintained playbooks. If a referenced branch or path no longer exists, resolve the current file before proceeding.
 
 ## Playbooks
 
 | File | Scope |
 | --- | --- |
 | [`git-commit.md`](git-commit.md) | Pre-flight checks and safety rules for creating Git commits |
+| [`github-repository.md`](github-repository.md) | Creating and publishing GitHub repositories safely |
 | [`self-host.md`](self-host.md) | Selecting, verifying, and operating open-source self-hosted software |
 | [`railway.md`](railway.md) | Railway infrastructure using `.railway/railway.ts` |
 | [`static-html.md`](static-html.md) | Single-file static HTML generation |
