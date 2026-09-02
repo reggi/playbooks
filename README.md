@@ -1,4 +1,4 @@
-# brain
+# playbooks
 
 This repository is a collection of small, high-value prompt files that describe how I want LLMs and agents to work across projects.
 
@@ -8,7 +8,7 @@ The goal is consistency without loading a large instruction set into every conve
 
 Reference the relevant playbook directly:
 
-> I want to deploy an instance of Vikunja on Railway. Follow `https://github.com/<owner>/<repository>/blob/main/self-host.md`.
+> I want to deploy an instance of Vikunja on Railway. Follow `https://github.com/reggi/playbooks/blob/reggi/initial-playbooks/self-host.md`.
 
 Agents should:
 
